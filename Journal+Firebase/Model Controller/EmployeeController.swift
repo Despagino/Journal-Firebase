@@ -53,7 +53,10 @@ struct EmployeeController {
     
 
     //MARK: - Update
-    
+    func update(objectKey: String, newName: String, newStatus: String) {
+        dbRes.child("\(objectKey)/name").setValue(newName)
+        dbRes.child("\(objectKey)/status").setValue(newStatus)
+    }
     
     
 }
