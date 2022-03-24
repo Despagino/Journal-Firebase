@@ -26,14 +26,17 @@ class MainVC: UIViewController {
 
     @IBAction func updateButtonTapped(_ sender: Any) {
         updateButton.shake()
+        
     }
 
     @IBAction func fetchAllButtonTapped(_ sender: Any) {
         fetchAllButton.shake()
+        EmployeeController.shared.readAll()
     }
 
     @IBAction func fetchOneButtonTapped(_ sender: Any) {
         fetchOneButton.shake()
+        EmployeeController.shared.readEmployee()
     }
 }
 
