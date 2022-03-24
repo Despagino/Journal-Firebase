@@ -6,24 +6,24 @@
 //
 
 import Foundation
-import Firebase
+import FirebaseDatabase
 
 struct EmployeeController {
 
     
     static let shared = EmployeeController()
-    let dbRes = Database.database().reference()
+    let ref = Database.database().reference()
 
     //MARK: - Save
         
     func save(name: String, status: String) {
-        dbRes.childByAutoId().setValue(["name": "\(name)", "status": "\(status)"])
-    }
+            ref.childByAutoId().setValue(["name": "\(name)", "status": "\(status)"])
+        }
 
     //MARK: - read all (fetch all)
     
     func readAll() {
-        dbRes.observeSingleEvent(of: .value) { snapShot in
+        ref.observeSingleEvent(of: .value) { snapShot in
             
             guard let dictionary = snapShot.value as? [String: [String: Any]] else {
                 print("Error reading all items")
@@ -45,7 +45,7 @@ struct EmployeeController {
     //MARK: - read (fetch one)
     
     func readEmployee() {
-        dbRes.child("employee").observeSingleEvent(of: .value) { snapshot in
+        ref.child("employee").observeSingleEvent(of: .value) { snapshot in
             let employeeData = snapshot.value as? [String: Any]
             print(employeeData ?? "No data was able to be read")
         }
@@ -54,8 +54,8 @@ struct EmployeeController {
 
     //MARK: - Update
     func update(objectKey: String, newName: String, newStatus: String) {
-        dbRes.child("\(objectKey)/name").setValue(newName)
-        dbRes.child("\(objectKey)/status").setValue(newStatus)
+        ref.child("\(objectKey)/name").setValue(newName)
+        ref.child("\(objectKey)/status").setValue(newStatus)
     }
     
     
