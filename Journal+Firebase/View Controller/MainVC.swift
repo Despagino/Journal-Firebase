@@ -21,19 +21,19 @@ class MainVC: UIViewController {
 
 
     @IBAction func saveButtonTapped(_ sender: Any) {
-
+        saveButton.shake()
     }
 
     @IBAction func updateButtonTapped(_ sender: Any) {
-
+        updateButton.shake()
     }
 
     @IBAction func fetchAllButtonTapped(_ sender: Any) {
-
+        fetchAllButton.shake()
     }
 
     @IBAction func fetchOneButtonTapped(_ sender: Any) {
-
+        fetchOneButton.shake()
     }
 }
 
